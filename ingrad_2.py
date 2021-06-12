@@ -60,8 +60,9 @@ def func():
                 time.sleep(50)
                 continue
 
-        func()
+        
         close(launch())
+        func()
     except:
         close(launch())
         time.sleep(50)
