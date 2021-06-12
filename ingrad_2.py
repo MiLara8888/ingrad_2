@@ -14,23 +14,23 @@ spisok = []
 count=0
 token = '1888887403:AAGE01kaCBaUP9TFvzIBqDxVasZbI8v01lI'  # MYtestbot
 bot = telebot.TeleBot(token)
-# exec_path = os.environ.get("GOOGLE_CHROME_SHIM", None)
-#
-#
-# def launch():
-#     browser = pyppeteer.launch(executablePath=exec_path,
-#                                args=[
-#                                    "--no-sandbox",
-#                                    # "--single-process",
-#                                    "--disable-dev-shm-usage",
-#                                    "--disable-gpu",
-#                                    "--no-zygote",
-#                                ], )
-#     return browser
-#
-#
-# def close(browser):
-#     return browser.close()
+exec_path = os.environ.get("GOOGLE_CHROME_SHIM", None)
+
+
+def launch():
+    browser = pyppeteer.launch(executablePath=exec_path,
+                               args=[
+                                   "--no-sandbox",
+                                   # "--single-process",
+                                   "--disable-dev-shm-usage",
+                                   "--disable-gpu",
+                                   "--no-zygote",
+                               ], )
+    return browser
+
+
+def close(browser):
+    return browser.close()
 
 
 def func():
@@ -63,11 +63,11 @@ def func():
                 time.sleep(50)
                 continue
 
-        # close(launch())
+        close(launch())
         time.sleep(100)
         func()
     except:
-        # close(launch())
+        close(launch())
         print('ошибка')
         time.sleep(50)
         func()
