@@ -65,6 +65,7 @@ def func():
         func()
     except:
         close(launch())
+        print('ошибка')
         time.sleep(50)
         func()
 
