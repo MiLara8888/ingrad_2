@@ -11,7 +11,6 @@ import pyppeteer
 
 urllib3.disable_warnings()
 spisok = []
-count=0
 token = '1888887403:AAGE01kaCBaUP9TFvzIBqDxVasZbI8v01lI'  # MYtestbot
 bot = telebot.TeleBot(token)
 exec_path = os.environ.get("GOOGLE_CHROME_SHIM", None)
@@ -35,10 +34,7 @@ def close(browser):
 
 def func():
     try:
-        # launch()
-        global count
-        count+=1
-        print(count)
+        launch()
         global spisok
         print('выполняюсь')
         url1 = 'https://www.ingrad.ru/commercial/'
