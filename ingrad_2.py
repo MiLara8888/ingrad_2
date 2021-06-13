@@ -33,10 +33,10 @@ def close(browser):
 
 
 def func():
+
     try:
-        launch()
-        global spisok
-        print('выполняюсь')
+
+        result_spisok = []
         url1 = 'https://www.ingrad.ru/commercial/'
         headers = {'accept': '/',
                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
@@ -50,23 +50,23 @@ def func():
         soup = BeautifulSoup(content, "lxml")
         for i in soup.find_all(class_='overlink'):
             try:
-                if re.match(r'\/projects\/\w+\/select\/commercial\/all',
-                            str(i.get('href'))) and 'https://www.ingrad.ru' + str(i.get('href')) not in spisok:
-                    spisok.append('https://www.ingrad.ru' + str(i.get('href')))
-                    bot.send_message(487422659, 'https://www.ingrad.ru' + str(i.get('href')))
+                if re.match(r'\/projects\/\w+\/select\/commercial\/all', str(i.get('href'))):
+                    result_spisok.append('https://www.ingrad.ru' + str(i.get('href')))
             except:
-                bot.send_message(487422659, 'Бот сломался')
                 time.sleep(50)
                 continue
-
-        close(launch())
-        time.sleep(100)
-        func()
+        session.close()
+        return result_spisok
     except:
-        close(launch())
-        print('ошибка')
-        time.sleep(50)
-        func()
-
-
-func()
+        return []
+while True:
+    launch()
+    res=func()
+    for i in res:
+        if i not in spisok:
+            bot.send_message(487422659,i)
+    if len(res)!=0:
+        spisok=res
+    print('проверка завершилась')
+    close(launch())
+    time.sleep(100)
