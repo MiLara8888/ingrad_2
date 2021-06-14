@@ -6,3 +6,4 @@ bs4==0.0.1
 pyppdf==0.1.2
 pyppeteer==0.2.5
 requests_html==0.10.0
+websockets==6.0
