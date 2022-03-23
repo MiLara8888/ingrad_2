@@ -11,7 +11,7 @@ import pyppeteer
 
 urllib3.disable_warnings()
 spisok = []
-token = '1888887403:AAGE01kaCBaUP9TFvzIBqDxVasZbI8v01lI'  # MYtestbot
+token = ''  # MYtestbot
 bot = telebot.TeleBot(token)
 exec_path = os.environ.get("GOOGLE_CHROME_SHIM", None)
 
